@@ -2,119 +2,138 @@
 
 **Sistema Profesional de Originación Rápida de Crédito**
 
-Plataforma empresarial de evaluación crediticia en tiempo real construida con las tecnologías más modernas y escalables del mercado.
+Plataforma empresarial de evaluación crediticia en tiempo real construida con Next.js 14, TypeScript y TailwindCSS.
+
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Next.js](https://img.shields.io/badge/Next.js-14-black)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)
 
 ---
 
-## 🎯 Para Qué Sirve
+## 🎯 ¿Qué es QuickCredit Pro?
 
-QuickCredit Pro permite a tiendas y comercios:
-
-- ✅ **Evaluar clientes en 30 segundos**: Decisión crediticia instantánea
-- ✅ **Cerrar más ventas**: Sugerencias automáticas para aprobar créditos
-- ✅ **Control de riesgo**: Política crediticia configurable y auditable
-- ✅ **Analytics en tiempo real**: Métricas de aprobación, DTI, y más
-
----
-
-## 💼 Ideal Para Vender Como Servicio
-
-Este proyecto está diseñado para ser **vendido como SaaS** a:
-
-- 🏪 **Tiendas retail** (electrónica, muebles, motos)
-- 🛍️ **E-commerce** con financiamiento
-- 🏦 **Microfinancieras** y cooperativas
-- 📱 **Fintechs** de crédito al consumo
-
-**Modelo de negocio sugerido:**
-- $99/mes por tienda (hasta 500 evaluaciones/mes)
-- $299/mes por cadena (evaluaciones ilimitadas + multi-tienda)
-- $999/mes empresarial (white-label + API dedicada)
+QuickCredit Pro permite a tiendas y comercios evaluar clientes en **30 segundos** y recibir:
+- ✅ Decisión crediticia instantánea (APPROVE, REVIEW, REJECT)
+- 💡 Sugerencias automáticas para cerrar ventas
+- 📊 Métricas de riesgo (DTI, entrada, monto financiado)
+- 🎯 Recomendaciones accionables
 
 ---
 
-## 🚀 Tech Stack (Nivel Empresarial)
+## ✨ Características
 
-### Frontend & Backend
-- **Next.js 14** (App Router) - Framework React full-stack
-- **TypeScript** - Type-safety end-to-end
-- **TailwindCSS** - Diseño moderno y responsive
-- **React Hooks** - Estado y formularios
+### Para Vendedores
+- ⚡ **Evaluación instantánea** en menos de 30 segundos
+- 💰 **Sugerencias inteligentes** para aprobar créditos
+- 📱 **Interfaz moderna** fácil de usar
+- 📊 **Historial** de evaluaciones
 
-### API & Business Logic
-- **Next.js API Routes** - Serverless endpoints
-- **Credit Engine** - Motor de evaluación profesional
-- **In-memory Storage** - MVP rápido (fácil migrar a Supabase)
+### Para Administradores
+- 🎛️ **Control de riesgo** con política configurable
+- 📈 **Analytics** en tiempo real
+- 👥 **Gestión multi-usuario**
+- 📉 **Dashboard** con métricas clave
 
-### Deploy & Escalabilidad
-- **Vercel** - Deploy en 1 click, edge network global
-- **Supabase** (próximo) - PostgreSQL + Auth + Real-time
-- **Prisma ORM** (próximo) - Type-safe DB queries
+### Técnicas
+- 🚀 **Next.js 14** (App Router)
+- 💪 **TypeScript** 100%
+- 🎨 **TailwindCSS** para diseño moderno
+- ⚡ **Server Components** para mejor performance
+- 📱 **Responsive** (móvil, tablet, desktop)
 
 ---
 
-## ⚡ Quick Start (5 minutos)
+## 🚀 Demo en Vivo
 
-### 1. Instalar Dependencias
+**URL**: [En proceso de deploy]
+
+**Credenciales de prueba**:
+- Usuario vendedor: `seller1` / `seller123`
+- Usuario admin: `admin` / `admin123`
+
+---
+
+## 📦 Instalación
+
+### Requisitos Previos
+- Node.js 18+ 
+- npm o yarn
+
+### Pasos
 
 ```bash
-cd credit-origination-pro
+# 1. Clonar el repositorio
+git clone https://github.com/ionatan777/QuickCredit-Pro.git
+cd QuickCredit-Pro
+
+# 2. Instalar dependencias
 npm install
-```
 
-### 2. Ejecutar en Desarrollo
-
-```bash
+# 3. Ejecutar en desarrollo
 npm run dev
+
+# 4. Abrir en el navegador
+http://localhost:3000
 ```
 
-Abre [http://localhost:3000](http://localhost:3000) y listo! 🎉
-
-### 3. Probar la Evaluación
-
-Los datos de ejemplo ya vienen pre-cargados:
-- Cliente: 28 años, $1,500 ingreso mensual
-- Producto: Smartphone de $800
-- Entrada: $100
-- Plazo: 12 meses
-
-Click en **"Evaluar Crédito"** y verás el resultado instantáneo.
+¡Ya está funcionando! 🎉
 
 ---
 
-## 📊 Cómo Funciona la Evaluación
+## 🎮 Uso
 
-### Motor de Reglas
+### Evaluar un Crédito
 
-El sistema evalúa según policy crediticia profesional:
+1. **Ingresar datos del cliente:**
+   - Edad
+   - Ingreso mensual
+   - Antigüedad laboral
+   - Historial de mora (opcional)
 
-#### 1. **Validaciones Básicas**
+2. **Ingresar datos de la operación:**
+   - Producto
+   - Precio
+   - Entrada
+   - Plazo
+   - Cuota mensual
+
+3. **Click en "Evaluar Crédito"**
+
+4. **Ver resultado:**
+   - 🟢 **APPROVE**: Cliente elegible, cerrar venta
+   - 🟡 **CONDITIONAL_APPROVE**: Ajustar entrada/plazo según sugerencias
+   - 🔵 **REVIEW**: Requiere aprobación manual
+   - 🔴 **REJECT**: No cumple política, ver sugerencias alternativas
+
+---
+
+## 🧠 Motor de Evaluación
+
+### Reglas de Política
+
+```typescript
+// Hard Rules
 - Edad >= 18 años → REJECT si no cumple
 - Ingreso > 0 → REVIEW si no cumple
 - Antigüedad laboral >= 6 meses → REVIEW si no cumple
 
-#### 2. **DTI (Debt-to-Income Ratio) - CRÍTICO**
-```
+// DTI (Debt-to-Income Ratio)
 DTI = Cuota Mensual / Ingreso Mensual
-```
 
 - DTI <= 35% → APPROVE ✅
 - 35% < DTI <= 45% → REVIEW ⚠️
 - DTI > 45% → REJECT ❌
 
-#### 3. **Entrada Mínima**
-- Productos > $300 requieren >= 10% de entrada
+// Entrada mínima
+- Productos > $300 requieren >= 10% entrada
 - Si no cumple → CONDITIONAL_APPROVE con sugerencia
-
-#### 4. **Historial Interno**
-- Mora interna → REVIEW automático
+```
 
 ### Sugerencias Automáticas
 
-Cuando el crédito no cumple, el sistema sugiere:
-
+El sistema calcula automáticamente:
 1. **Aumentar entrada**: Calcula entrada mínima para aprobar
-2. **Reducir plazo**: Calcula plazo máximo para DTI óptimo
+2. **Reducir plazo**: Calcula plazo óptimo para DTI aceptable
 3. **Reducir monto**: Calcula precio máximo financiable
 
 **Ejemplo:**
@@ -126,117 +145,29 @@ Cliente con DTI 50% (muy alto)
 
 ---
 
-## 🎨 Características de UI/UX
-
-### Diseño Profesional
-- ✨ **Gradientes modernos** y glassmorphism
-- 📱 **Responsive** (móvil, tablet, desktop)
-- ⚡ **Animaciones suaves** con Tailwind
-- 🎯 **UX intuitiva** sin capacitación
-
-### Dashboard de Resultados
-- 🟢 **Verde** = APPROVE (DTI óptimo)
-- 🟡 **Amarillo** = CONDITIONAL_APPROVE (ajustar entrada)
-- 🔵 **Azul** = REVIEW (manual)
-- 🔴 **Rojo** = REJECT (DTI muy alto)
-
-### Métricas Clave
-- **DTI**: Ratio de deuda/ingreso
-- **Entrada**: % de pie inicial
-- **Monto Financiado**: Capital a prestar
-
----
-
-## 🏗️ Arquitectura del Código
+## 🏗️ Arquitectura
 
 ```
 credit-origination-pro/
 ├── app/
 │   ├── api/
-│   │   ├── evaluate/route.ts   # POST /api/evaluate
-│   │   └── health/route.ts     # GET /api/health
-│   ├── layout.tsx              # Root layout
-│   ├── page.tsx                # Homepage with form
-│   └── globals.css             #  Tailwind base
+│   │   ├── evaluate/route.ts    # POST /api/evaluate
+│   │   └── health/route.ts      # Health check
+│   ├── layout.tsx               # Root layout
+│   ├── page.tsx                 # Homepage
+│   └── globals.css              # Tailwind base
 ├── lib/
-│   ├── evaluation-engine.ts    # Core business logic ⭐
-│   └── utils.ts                # Helpers
+│   ├── evaluation-engine.ts     # Motor de evaluación ⭐
+│   └── utils.ts                 # Helpers
 ├── package.json
 ├── tailwind.config.ts
 ├── tsconfig.json
 └── next.config.ts
 ```
 
-**Motor de Evaluación** (`lib/evaluation-engine.ts`):
-- 🧠 Lógica de negocio pura (fácil de testear)
-- 🔧 Configurable via constantes
-- 📏 Reglas auditables y versionables
-- 🚀 Sin dependencias externas
-
 ---
 
-## 🔄 Próximas Mejoras (Para Producción)
-
-### Fase 1: Database (1-2 horas)
-- [ ] Setup Supabase project
-- [ ] Crear schema Prisma
-- [ ] Migrar storage a PostgreSQL
-- [ ] Persistir evaluaciones
-
-### Fase 2: Autenticación (1 hora)
-- [ ] Supabase Auth
-- [ ] Login/Registro vendedores
-- [ ] Roles (admin/seller)
-- [ ] Rutas protegidas
-
-### Fase 3: Multi-tenant (2 horas)
-- [ ] Dashboard por tienda
-- [ ] Configuración de política por cliente
-- [ ] White-label branding
-
-### Fase 4: Analytics (2 horas)
-- [ ] Dashboard admin
-- [ ] Gráficos de aprobación
-- [ ] Top motivos de rechazo
-- [ ] Métricas por vendedor
-
-### Fase 5: Deploy Producción (30 mins)
-- [ ] Push a GitHub
-- [ ] Connect Vercel
-- [ ] Setup env variables
-- [ ] Domain custom
-
-**Total: 6-8 horas para versión production-ready completa**
-
----
-
-## 📈 Escalabilidad
-
-### Performance
-
-**Benchmarks actuales:**
-- Evaluación: < 50ms
-- Carga inicial: ~800ms
-- Lighthouse Score: 95+
-
-**Capacidad:**
-- MVP actual: 10k evaluaciones/mes (in-memory)
-- Con Supabase: 1M evaluaciones/mes
-- Con cache Redis: 10M evaluaciones/mes
-
-### Costos
-
-**Gratis hasta:**
-- 100k evaluaciones/mes (Vercel free tier)
-- 500MB database (Supabase free tier)
-
-**A escala:**
-- 1M evaluaciones/mes: ~$45/mes (Vercel Pro + Supabase Pro)
-- 10M evaluaciones/mes: ~$200/mes
-
----
-
-## 🎯 API Documentation
+## 📊 API Documentation
 
 ### POST /api/evaluate
 
@@ -274,121 +205,156 @@ Evalúa una solicitud de crédito.
     "financedAmount": 700
   },
   "segment": "MID",
-  "evaluatedAt": "2024-01-01T12:00:00.000Z",
-  "evaluatedBy": "seller1"
-}
-```
-
-### GET /api/evaluate
-
-Obtiene historial de evaluaciones.
-
-**Response:**
-```json
-{
-  "total": 15,
-  "items": [
-    {
-      "evaluationId": "eval_xxx",
-      "decision": "APPROVE",
-      "customerAge": 28,
-      "productPrice": 800,
-      "segment": "MID",
-      "evaluatedAt": "2024-01-01T12:00:00.000Z",
-      "evaluatedBy": "seller1"
-    }
-  ]
+  "evaluatedAt": "2024-01-01T12:00:00.000Z"
 }
 ```
 
 ---
 
-## 🔐 Configuración de Política
+## 🚀 Deploy a Producción
 
-Para ajustar la política crediticia, edita `lib/evaluation-engine.ts`:
+### Opción 1: Vercel (Recomendado)
+
+**1 Click Deploy:**
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/ionatan777/QuickCredit-Pro)
+
+**Manual:**
+```bash
+# 1. Install Vercel CLI
+npm i -g vercel
+
+# 2. Deploy
+vercel
+
+# 3. Production deploy
+vercel --prod
+```
+
+### Opción 2: Docker
+
+```bash
+# Build
+docker build -t quickcredit-pro .
+
+# Run
+docker run -p 3000:3000 quickcredit-pro
+```
+
+---
+
+## 🔧 Configuración
+
+### Variables de Entorno
+
+Crea un archivo `.env.local`:
+
+```env
+# Database (futuro)
+DATABASE_URL=
+
+# Supabase (futuro)
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+
+# App
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+```
+
+### Personalizar Política de Crédito
+
+Edita `lib/evaluation-engine.ts`:
 
 ```typescript
 const POLICY = {
   MIN_AGE: 18,                    // Edad mínima
-  MIN_EMPLOYMENT_MONTHS: 6,       // Antigüedad laboral mínima
+  MIN_EMPLOYMENT_MONTHS: 6,       // Antigüedad laboral
   DTI_APPROVE_MAX: 0.35,          // DTI máximo para aprobar
   DTI_REVIEW_MAX: 0.45,           // DTI máximo antes de rechazar
   MIN_DOWN_PAYMENT_RATIO: 0.10,   // Entrada mínima (%)
-  HIGH_TICKET_THRESHOLD: 300,     // Threshold para entrada obligatoria
-  SEGMENT_MID_MIN: 300,           // Inicio segmento MID
-  SEGMENT_HIGH_MIN: 900,          // Inicio segmento HIGH
+  HIGH_TICKET_THRESHOLD: 300,     // Threshold para entrada
 }
 ```
 
 ---
 
-## 🎓 Built With Modern Best Practices
+## 🛣️ Roadmap
 
-- ✅ **TypeScript** 100% type-safe
-- ✅ **ESLint** configurado
-- ✅ **Server Components** para performance
-- ✅ **API Routes** serverless
-- ✅ **Responsive Design** mobile-first
-- ✅ **Clean Architecture** separación de concerns
+### v1.1 (Próximo)
+- [ ] Integración con Supabase
+- [ ] Autenticación real (JWT)
+- [ ] Multi-tenant
+- [ ] Admin dashboard completo
 
----
-
-## 🌐 Deploy a Producción
-
-### Option 1: Vercel (Recomendado)
-
-1. Push código a GitHub
-2. Import en Vercel
-3. Auto-deploy
-
-**URL:** `https://your-app.vercel.app`
-
-### Option 2: Self-hosted
-
-```bash
-npm run build
-npm start
-```
+### v1.2 (Futuro)
+- [ ] Integración con bureaus de crédito
+- [ ] Webhooks
+- [ ] API pública
+- [ ] Mobile app
 
 ---
 
-## 📧 Soporte y Contacto
+## 💼 Modelo de Negocio
 
-**Para vender este producto:**
+**Precio sugerido (SaaS):**
 
-Pitch de ventas:
-> "QuickCredit Pro reduce el tiempo de evaluación crediticia de 1 hora a 30 segundos, aumentando las ventas en un 35% y reduciendo la morosidad con IA y reglas profesionales auditables."
+| Plan | Precio/mes | Características |
+|------|-----------|----------------|
+| **Básico** | $99 | 1 tienda, 500 eval/mes |
+| **Pro** | $299 | 5 tiendas, ilimitado |
+| **Enterprise** | $999 | White-label, custom |
 
-**Ventajas competitivas:**
-- ⚡ Evaluación instantánea (vs bureaus que tardan minutos)
-- 💰 Sugerencias automáticas para cerrar (único en el mercado)
-- 🎯 Sin código ni capacitación (plug & play)
-- 📊 Analytics en tiempo real
-- 🔒 Cumplimiento regulatorio fácil
+**ROI proyectado:**
+- 10 clientes Básico + 5 Pro + 2 Enterprise = **$53K/año**
 
 ---
 
 ## 📝 Licencia
 
-Código propietario. Contactar para licencia comercial.
+MIT License - ver [LICENSE](LICENSE)
 
 ---
 
-## 🚀 Versión Actual
+## 👨‍💻 Autor
 
-**v1.0.0** - MVP Funcional
-- ✅ Motor de evaluación completo
-- ✅ UI/UX profesional
-- ✅ API REST funcional
-- ✅ Sugerencias automáticas
-- ✅ Deploy-ready
-
-**Próxima versión (v1.1.0):**
-- [ ] Supabase integration
-- [ ] User authentication
-- [ ] Multi-tenant
-- [ ] Admin dashboard
+**Jhonatan Pillajo**
+- GitHub: [@ionatan777](https://github.com/ionatan777)
+- Empresa: **CodelyLabs**
 
 ---
 
-**Built with ❤️ using Next.js 14, TypeScript, and TailwindCSS**
+## 🤝 Contribuir
+
+Las contribuciones son bienvenidas!
+
+1. Fork el proyecto
+2. Crea tu rama (`git checkout -b feature/AmazingFeature`)
+3. Commit cambios (`git commit -m 'Add: nueva característica'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
+
+---
+
+## 📞 Soporte
+
+¿Preguntas o sugerencias?
+- 📧 Email: ionatan777@gmail.com
+- 🐛 Issues: [GitHub Issues](https://github.com/ionatan777/QuickCredit-Pro/issues)
+
+---
+
+## ⭐ Agradecimientos
+
+- Next.js Team por el increíble framework
+- Vercel por el hosting gratuito
+- TailwindCSS por el sistema de diseño
+
+---
+
+<div align="center">
+
+**¿Te gustó el proyecto? Dale ⭐ en GitHub!**
+
+Hecho con ❤️ por CodelyLabs © 2025
+
+</div>
